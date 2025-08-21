@@ -1,0 +1,32 @@
+{
+  "status": "published",
+  "documentType": "SMProjectInfo",
+  "selectAttributes": [
+    "ProjectId",
+    "SourceSystem",
+    "LegalApprovalLevel",
+    "FinanceApprovalLevel",
+    "QualityApprovalLevel",
+    "SustainabilityApprovalLevel",
+    "PurchasingApprovalLevel",
+    "LOBApprovalLevel",
+    "RiskScore",
+    "CommodityLevelsMax",
+    "CommodityLevelsMin",
+    "IsLegacy"
+  ],
+  "filterExpressions": [
+    {
+      "name": "updatedDateTo",
+      "field": "TimeUpdated",
+      "op": "<=",
+      "defaultValue": null
+    },
+    {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">",
+      "defaultValue": null
+    }
+  ]
+}
