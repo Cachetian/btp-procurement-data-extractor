@@ -1,0 +1,61 @@
+{
+    "status": "draft",
+    "documentType": "CollaborationRequestFact",
+    "selectAttributes": [
+        "RealmString",
+        "RequisitionId",
+        "RequisitionLineNumber",
+        "TimeCreated",
+        "TimeUpdated",
+        "CollaborationRequestId",
+        "CRLineNumber",
+        "Requisition",
+        "AmountProposed",
+        "ResponseTime",
+        "CollaborationTime",
+        "Supplier",
+        "Status",
+        "Response",
+        "SubmitDate",
+        "ResponseDate",
+        "CompletedDate",
+        "Commodity",
+        "ERPCommodity",
+        "SourceSystem",
+        "CollaborationItemType",
+        "OriginalItemSupplier",
+        "RequestedRate",
+        "RequestedBillRate",
+        "RequestedPayRate",
+        "ExpenseAmount",
+        "CurrentSupplierResponse",
+        "Requester",
+        "RequestType",
+        "Quantity",
+        "UnitOfMeasure",
+        "ServiceCategoryDetail",
+        "Part",
+        "NonCatalogSupplierPartNumber",
+        "NonCatalogSupplierPartAuxiliaryId",
+        "DeclineReason",
+        "CancelReason",
+        "AssociatedCollaborationRequestId",
+        "StartDate",
+        "EndDate",
+        "WorkLocation"
+    ],
+    "filterExpressions": [
+        {
+            "name": "updatedDateTo",
+            "field": "TimeUpdated",
+            "op": "<=",
+            "defaultValue": null
+        },
+        {
+            "name": "updatedDateFrom",
+            "field": "TimeUpdated",
+            "op": ">",
+            "defaultValue": null
+        }
+    ]
+}

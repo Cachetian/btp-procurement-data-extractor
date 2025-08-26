@@ -29,6 +29,10 @@ const eventTypeDimHandler = require('../Analytical/sourcing/eventTypeDimHandler'
 const srProjectTaskFactHandler = require('../Analytical/sourcing/srProjectTaskFactHandler');
 const srProjectTaskApprovalFlowFactHandler = require('../Analytical/sourcing/srProjectTaskApprovalFlowFactHandler');
 const projectTaskFactHandler = require('../Analytical/sourcing/projectTaskFactHandler');
+const contractLineItemDocumentFactHandler = require('../contracts/contractLineItemDocumentFactHandler');
+const generalContractWorkspaceFactHandler = require('../contracts/generalContractWorkspaceFactHandler');
+const salesContractWorkspaceFactHandler = require('../contracts/salesContractWorkspaceFactHandler');
+const collaborationRequestFactHandler = require('../requisitions/collaborationRequestFactHandler');
 
 const receiptsFactHandler = require('../Analytical/receipt/receiptsFactHandler');
 const receiptsOSHandler = require('../Operational/receipts/receiptsOSHandler');
@@ -152,6 +156,11 @@ async function ProcessData(viewTemplateName,Records,realm){
                 case "EXT_RequisitionLineItem":
                     affectedRows = await requisitionLineItemsFactHandler.insertData(Records, realm)
                     break;
+                
+                case "EXT_CollaborationRequest":
+                    affectedRows = await collaborationRequestFactHandler.insertData(Records, realm)
+                    break;
+
                 case "EXT_ContractLineItem":
                     affectedRows = await contractLineItemsFactHandler.insertData(Records, realm)
                     break;
@@ -254,6 +263,19 @@ async function ProcessData(viewTemplateName,Records,realm){
                 case "EXT_ContractItem":
                     affectedRows = await contractItemFactHandler.insertData(Records, realm)
                     break;
+
+                case "EXT_ContractLineItemDocument":
+                    affectedRows = await contractLineItemDocumentFactHandler.insertData(Records, realm)
+                    break;
+
+                case "EXT_GeneralContractWorkspace":
+                    affectedRows = await generalContractWorkspaceFactHandler.insertData(Records, realm)
+                    break;
+
+                case "EXT_SalesContractWorkspace":
+                    affectedRows = await salesContractWorkspaceFactHandler.insertData(Records, realm)
+                    break;
+
                 case "EXT_SMSurveyTemplateQuestionDim":
                     affectedRows = await smSurveyTemplateQuestionDimHandler.insertData(Records, realm)
                     break;
