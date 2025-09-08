@@ -1,0 +1,44 @@
+{
+  "status": "published",
+  "documentType": "UserAbility",
+  "selectAttributes": [
+    "Realm",
+    "TimeCreated",
+    "TimeUpdated",
+    "UserData",
+    "SourceSystem",
+    "LastLoginDate",
+    "SourcingUser",
+    "ContractsUser",
+    "SPMUser",
+    "HasCreateInternalContractWorkspaceAbility",
+    "HasCreateSalesContractWorkspaceAbility",
+    "HasCreateProcurementContractWorkspaceAbility",
+    "HasCreateSalesContractRequestAbility",
+    "HasCreateSourcingProjectAbility",
+    "HasCreateSPMProjectAbility",
+    "HasCreateSupplierProjectAbility",
+    "HasCreateSQMProjectAbility",
+    "UserCount"
+  ],
+  "filterExpressions": [
+    {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
+      "name": "updatedDateTo",
+      "field": "TimeUpdated",
+      "op": "<=",
+      "defaultValue": null
+    },
+    {
+      "name": "user",
+      "field": "UserData",
+      "op": "=",
+      "defaultValue": null
+    }
+  ]
+}

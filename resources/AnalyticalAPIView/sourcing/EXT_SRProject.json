@@ -1,0 +1,65 @@
+{
+  "status": "published",
+  "documentType": "SRProject",
+  "selectAttributes": [
+    "Realm",
+    "TimeCreated",
+    "TimeUpdated",
+    "ProjectId",
+    "Description",
+    "AclId",
+    "Duration",
+    "BeginDate",
+    "DueDate",
+    "EndDate",
+    "EndDateTime",
+    "Status",
+    "State",
+    "OnTimeOrLate",
+    "Owner",
+    "ProjectInfo",
+    "DependsOnProject",
+    "ContainerProject",
+    "Process",
+    "Commodity",
+    "Organization",
+    "Region",
+    "IsTestProject",
+    "SourceSystem",
+    "ProcessStatus",
+    "AllOwners",
+    "SRProjectInfo",
+    "PrLastStartDate",
+    "PrLastEndDate",
+    "PrExpectedStartDate",
+    "PrExpectedEndDate",
+    "LastPrStatus",
+    "SRComment"
+  ],
+  "filterExpressions": [
+    {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
+      "name": "updatedDateTo",
+      "field": "TimeUpdated",
+      "op": "<=",
+      "defaultValue": null
+    },
+    {
+      "name": "projectId",
+      "field": "ProjectId",
+      "op": "=",
+      "defaultValue": null
+    },
+    {
+      "name": "status",
+      "field": "Status",
+      "op": "=",
+      "defaultValue": null
+    }
+  ]
+}

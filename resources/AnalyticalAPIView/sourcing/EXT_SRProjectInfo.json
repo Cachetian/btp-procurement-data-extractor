@@ -1,0 +1,54 @@
+{
+  "status": "published",
+  "documentType": "SRProjectInfo",
+  "selectAttributes": [
+    "Realm",
+    "TimeCreated",
+    "TimeUpdated",
+    "ProjectId",
+    "SourceSystem",
+    "EngagementRequestStatus",
+    "IssuePrimarySourceId",
+    "IssueSecondarySourceId",
+    "LiveERVersion",
+    "InChangeRequest",
+    "IsRiskLiable",
+    "ResidualRisk",
+    "InherentRiskRating",
+    "SourceProject",
+    "SourceProjectId",
+    "AclId"
+  ],
+  "filterExpressions": [
+    {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
+      "name": "updatedDateTo",
+      "field": "TimeUpdated",
+      "op": "<=",
+      "defaultValue": null
+    },
+    {
+      "name": "projectId",
+      "field": "ProjectId",
+      "op": "=",
+      "defaultValue": null
+    },
+    {
+      "name": "riskRating",
+      "field": "InherentRiskRating",
+      "op": "=",
+      "defaultValue": null
+    },
+    {
+      "name": "engagementRequestStatus",
+      "field": "EngagementRequestStatus",
+      "op": "=",
+      "defaultValue": null
+    }
+  ]
+}
