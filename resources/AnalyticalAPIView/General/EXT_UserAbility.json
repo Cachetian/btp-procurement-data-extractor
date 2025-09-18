@@ -1,8 +1,12 @@
 {
   "status": "published",
-  "documentType": "UserAbility",
+  "documentType": "UserAbilityFact",
   "selectAttributes": [
     "Realm",
+    "UserId",
+    "SourceSystemId",
+    "LoadCreateTime",
+    "LoadUpdateTime",
     "TimeCreated",
     "TimeUpdated",
     "UserData",
@@ -37,6 +41,18 @@
     {
       "name": "user",
       "field": "UserData",
+      "op": "=",
+      "defaultValue": null
+    },
+    {
+      "name": "realm",
+      "field": "Realm",
+      "op": "=",
+      "defaultValue": null
+    },
+    {
+      "name": "sourceSystem",
+      "field": "SourceSystem",
       "op": "=",
       "defaultValue": null
     }

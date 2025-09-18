@@ -1,27 +1,32 @@
 namespace sap.ariba;
 using { managed } from '@sap/cds/common';
-using sap.ariba.type as types from '../../types';
+using sap.ariba.type as types from '../types';
 
 /**
   Name:        User Ability Fact
   Class Name:  ariba.analytics.fact.UserAbility
-  Description: Analytical Fact - User Ability
+  Description: Analytical Fact - User Ability (General)
+  Database Table Name: FACT_USER_ABILITY
 */
+entity UserAbilityFact_AN : managed, types.customFields {
 
-entity UserAbilityFact : managed, types.customFields {
+  key Realm          : String(50);
+  key UserId         : String(50);
+  key SourceSystemId : String(100);
 
-  key Realm            : String(50);
-  key UserData         : types.userdata;
 
-      TimeCreated      : DateTime;
-      TimeUpdated      : DateTime;
+      LoadCreateTime : DateTime;
+      LoadUpdateTime : DateTime;
+      TimeCreated    : DateTime;
+      TimeUpdated    : DateTime;
+      
+      UserData       : types.user;
+      SourceSystem   : types.sourceSystem;
+      LastLoginDate  : types.day;
 
-      SourceSystem     : types.sourceSystem;
-      LastLoginDate    : DateTime;
-
-      SourcingUser     : Boolean;
-      ContractsUser    : Boolean;
-      SPMUser          : Boolean;
+      SourcingUser   : Boolean;
+      ContractsUser  : Boolean;
+      SPMUser        : Boolean;
 
       HasCreateInternalContractWorkspaceAbility    : Boolean;
       HasCreateSalesContractWorkspaceAbility       : Boolean;
@@ -32,5 +37,5 @@ entity UserAbilityFact : managed, types.customFields {
       HasCreateSupplierProjectAbility              : Boolean;
       HasCreateSQMProjectAbility                   : Boolean;
 
-      UserCount        : Integer;
+      UserCount      : Integer;
 }

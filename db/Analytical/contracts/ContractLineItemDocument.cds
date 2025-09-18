@@ -10,7 +10,7 @@ using sap.ariba.type as types from '../types';
     Database Table Name:	FACT_CONTRACT_LINE_ITEM_DOCUMENT
 
 */
-entity ContractLineItemDocument : managed,types.customFields  {
+entity ContractLineItemDocument_AN : managed,types.customFields  {
     key Realm                                           : String(50);
     Key DocumentId                                      : String(150);
         LoadCreateTime                                  : DateTime;

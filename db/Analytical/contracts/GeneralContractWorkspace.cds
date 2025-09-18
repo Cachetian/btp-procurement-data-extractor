@@ -8,7 +8,7 @@ using sap.ariba.type as types from '../types';
     Description:	Contract Workspace (Procurement)
     Database Table Name:	FACT_GENERAL_CONTRACT_WORKSPACE
 */
-entity GeneralContractWorkspace: managed,types.customFields  {
+entity GeneralContractWorkspace_AN: managed,types.customFields  {
     key ProjectId                       : String(50);
     key Realm                           : String(50);
         LoadCreateTime                  : DateTime;
@@ -64,27 +64,27 @@ entity GeneralContractWorkspace: managed,types.customFields  {
 
 }
 
-entity ContractWorkspaces_Commodity:  cuid  {
+entity ContractWorkspaces_Commodity_AN:  cuid  {
     Commodity                           : types.commodity;
-    ContractWorkspace                   : Association to ContractWorkspaces;
+    ContractWorkspace                   : Association to ContractWorkspaces_AN;
 }
 
-entity ContractWorkspaces_Organization:  cuid  {
+entity ContractWorkspaces_Organization_AN:  cuid  {
     Organization                        : types.organization;
-    ContractWorkspace                   : Association to ContractWorkspaces;
+    ContractWorkspace                   : Association to ContractWorkspaces_AN;
 }
 
-entity ContractWorkspaces_Region:  cuid  {
+entity ContractWorkspaces_Region_AN:  cuid  {
     Region                              : types.region;
-    ContractWorkspace                   : Association to ContractWorkspaces;
+    ContractWorkspace                   : Association to ContractWorkspaces_AN;
 }
 
-entity ContractWorkspaces_AffectedParties:  cuid  {
+entity ContractWorkspaces_AffectedParties_AN:  cuid  {
     AffectedParties                     : types.supplier;
-    ContractWorkspace                   : Association to ContractWorkspaces;
+    ContractWorkspace                   : Association to ContractWorkspaces_AN;
 }
 
-entity ContractWorkspaces_AllOwners:  cuid  {
+entity ContractWorkspaces_AllOwners_AN:  cuid  {
     AllOwners                           : types.contact;
-    ContractWorkspace                   : Association to ContractWorkspaces;
+    ContractWorkspace                   : Association to ContractWorkspaces_AN;
 }

@@ -26,6 +26,8 @@ const sourcingRequestsFactHandler = require('../Analytical/sourcing/sourcingRequ
 const eventDimHandler = require('../Analytical/sourcing/eventDimHandler');
 const eventTypeDimHandler = require('../Analytical/sourcing/eventTypeDimHandler');
 
+const srProjectHandler = require('../Analytical/sourcing/srProjectHandler');
+const srProjectInfoHandler = require('../Analytical/sourcing/srProjectInfoHandler');
 const srProjectTaskFactHandler = require('../Analytical/sourcing/srProjectTaskFactHandler');
 const srProjectTaskApprovalFlowFactHandler = require('../Analytical/sourcing/srProjectTaskApprovalFlowFactHandler');
 const projectTaskFactHandler = require('../Analytical/sourcing/projectTaskFactHandler');
@@ -53,6 +55,7 @@ const supplierRegistrationProjectsFactHandler = require('../Analytical/suppliers
 const supplierRequestProjectsFactHandler = require('../Analytical/suppliers/supplierRequestProjectsFactHandler');
 const spmProjectsFactHandler = require('../Analytical/suppliers/spmProjectsFactHandler');
 const smProjectsFactHandler = require('../Analytical/suppliers/smProjectsFactHandler');
+const smProjectInfoHandler = require('../Analytical/suppliers/smProjectInfoHandler');
 const smProjectQuestionnaireResponsesFactHandler = require('../Analytical/suppliers/smProjectQuestionnaireResponsesFactHandler');
 const surveyResponseFactHandler = require('../Analytical/suppliers/surveyResponseFactHandler');
 const scorecardFactHandler = require('../Analytical/suppliers/scorecardFactHandler');
@@ -72,6 +75,7 @@ const savingsAllocationDetailsFactHandler = require('../Analytical/sourcing/savi
 const savingsFormFactHandler = require('../Analytical/sourcing/savingsFormFactHandler');
 
 const userDataDimHandler = require('../Analytical/general/userDataDimHandler');
+const userAbilityHandler = require('../Analytical/general/userAbilityHandler');
 const costCenterDimHandler = require('../Analytical/general/costCenterDimHandler');
 const companyCodeDimHandler = require('../Analytical/general/companyCodeDimHandler');
 
@@ -215,6 +219,9 @@ async function ProcessData(viewTemplateName,Records,realm){
                 case "EXT_SMProjects":
                     affectedRows = await smProjectsFactHandler.insertData(Records, realm)
                     break;
+                case "EXT_SMProjectInfo":
+                    affectedRows = await smProjectInfoHandler.insertData(Records, realm)
+                    break;
                 case "EXT_Approval":
                     affectedRows = await approvalsFactHandler.insertData(Records, realm)
                     break;
@@ -241,6 +248,12 @@ async function ProcessData(viewTemplateName,Records,realm){
                     break;
                 case "EXT_SRProjectTaskApprovalFlow":
                     affectedRows = await srProjectTaskApprovalFlowFactHandler.insertData(Records, realm)
+                    break;
+                case "EXT_SRProject":
+                    affectedRows = await srProjectHandler.insertData(Records, realm)
+                    break;
+                case "EXT_SRProjectInfo":
+                    affectedRows = await srProjectInfoHandler.insertData(Records, realm)
                     break;
                 case "EXT_ProjectTask":
                     affectedRows = await projectTaskFactHandler.insertData(Records, realm)
@@ -314,6 +327,9 @@ async function ProcessData(viewTemplateName,Records,realm){
                         break;                
                 case "EXT_UserData":
                     affectedRows = await userDataDimHandler.insertData(Records, realm)
+                    break;
+                case "EXT_UserAbility":
+                    affectedRows = await userAbilityHandler.insertData(Records, realm)
                     break;
                 //Operational Reporting Procurement API
                 case "EXT_OP_Requisition":

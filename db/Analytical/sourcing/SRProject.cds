@@ -1,61 +1,81 @@
 namespace sap.ariba;
 using { managed, cuid } from '@sap/cds/common';
-using sap.ariba.type as types from '../../types';
+using sap.ariba.type as types from '../types';
 
 /**
-  Name:        Sourcing Request Projects
-  Class Name:  ariba.analytics.fact.SRProjects
-  Description: Analytical Fact - Sourcing Request Projects
+    Name:           Sourcing Request Project
+    Class Name:     ariba.analytics.fact.SRProject
+    Description:    Sourcing Request Project Fact (Sourcing)
+    Database Table Name: FACT_SR_PROJECT
 */
+entity SRProject_AN : managed, types.customFields {
+    key Realm                   : String(50);
+    key ProjectId               : String(50);
 
-entity SRProjects : managed, types.customFields {
+    
+    TimeCreated                 : DateTime;
+    TimeUpdated                 : DateTime;
+    LoadCreateTime              : DateTime;
+    LoadUpdateTime              : DateTime;
+    
+    Description                 : String(3000);
+    Status                      : String(90);
+    State                       : String(60);
+    OnTimeOrLate                : String(60);
+    Owner                       : types.owner;
+    SourceSystem                : types.sourceSystem;
 
-  key Realm              : String(50);
-  key ProjectId          : String(50);
+    Supplier                    : types.supplier;
+    Process                     : types.process;
+    ProjectInfo                 : types.projectInfo;
+    DependsOnProject            : types.projectInfo;
+    ContainerProject            : types.projectInfo;
+    SRProjectInfo               : types.SRProjectInfo;
 
-      TimeCreated        : DateTime;
-      TimeUpdated        : DateTime;
+    BeginDate                   : types.day;
+    DueDate                     : types.day;
+    EndDate                     : types.day;
+    EndDateTime                 : types.day;
+    PrLastStartDate             : types.day;
+    PrLastEndDate               : types.day;
+    PrExpectedStartDate         : types.day;
+    PrExpectedEndDate           : types.day;
 
-      Description        : String(1000);
-      AclId              : Integer;
-      Duration           : Double;
+    Duration                    : Decimal(18,6);
+    AclId                       : Integer;
+    ProcessStatus               : String(90);
+    LastPrStatus                : String(90);
+    IsTestProject               : Boolean;
 
-      BeginDate          : types.singleDate;
-      DueDate            : types.singleDate;
-      EndDate            : types.singleDate;
-      EndDateTime        : DateTime;
-
-      Status             : String(30);
-      State              : String(30);
-      OnTimeOrLate       : String(10);
-
-      Owner              : types.userdata;
-      ProjectInfo        : Association to SRProjectInfo;    
-      DependsOnProject   : String(50);
-      ContainerProject   : String(50);
-
-      Process            : String(50);
-      Commodity          : String(255);
-      Organization       : String(255);
-      Region             : String(255);
-
-      IsTestProject      : Boolean;
-      SourceSystem       : types.sourceSystem;
-      ProcessStatus      : String(50);
-
-      AllOwners          : Composition of many SRProjects_AllOwners on AllOwners.SRProject = $self;
-      SRProjectInfo      : Association to SRProjectInfo;   
-
-      PrLastStartDate    : types.singleDate;
-      PrLastEndDate      : types.singleDate;
-      PrExpectedStartDate: types.singleDate;
-      PrExpectedEndDate  : types.singleDate;
-
-      LastPrStatus       : String(30);
-      SRComment          : String(1000);
+    // Associations
+    Commodity                   : Composition of many SRProject_Commodity on Commodity.SRProject = $self;
+    Organization                : Composition of many SRProject_Organization on Organization.SRProject = $self;
+    Region                      : Composition of many SRProject_Region on Region.SRProject = $self;
+    AllOwners                   : Composition of many SRProject_AllOwners on AllOwners.SRProject = $self;
+    SRComment                   : Composition of many SRProject_SRComment on SRComment.SRProject = $self;
 }
 
-entity SRProjects_AllOwners : cuid {
-  AllOwners   : types.userdata;
-  SRProject   : Association to SRProjects;
+entity SRProject_Commodity_AN : cuid {
+    Commodity   : types.commodity;
+    SRProject   : Association to SRProject_AN;
+}
+
+entity SRProject_Organization_AN : cuid {
+    Organization : types.organization;
+    SRProject    : Association to SRProject_AN;
+}
+
+entity SRProject_Region_AN : cuid {
+    Region      : types.region;
+    SRProject   : Association to SRProject_AN;
+}
+
+entity SRProject_AllOwners_AN : cuid {
+    AllOwners   : types.user;
+    SRProject   : Association to SRProject_AN;
+}
+
+entity SRProject_SRComment_AN : cuid {
+    SRComment   : types.SRComment;
+    SRProject   : Association to SRProject_AN;
 }

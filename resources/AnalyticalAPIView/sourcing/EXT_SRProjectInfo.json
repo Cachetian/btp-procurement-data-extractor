@@ -3,9 +3,11 @@
   "documentType": "SRProjectInfo",
   "selectAttributes": [
     "Realm",
+    "ProjectId",
     "TimeCreated",
     "TimeUpdated",
-    "ProjectId",
+    "LoadCreateTime",
+    "LoadUpdateTime",
     "SourceSystem",
     "EngagementRequestStatus",
     "IssuePrimarySourceId",
@@ -39,6 +41,12 @@
       "defaultValue": null
     },
     {
+      "name": "sourceSystem",
+      "field": "SourceSystem",
+      "op": "=",
+      "defaultValue": null
+    },
+    {
       "name": "riskRating",
       "field": "InherentRiskRating",
       "op": "=",
@@ -47,6 +55,12 @@
     {
       "name": "engagementRequestStatus",
       "field": "EngagementRequestStatus",
+      "op": "=",
+      "defaultValue": null
+    },
+    {
+      "name": "isRiskLiable",
+      "field": "IsRiskLiable",
       "op": "=",
       "defaultValue": null
     }

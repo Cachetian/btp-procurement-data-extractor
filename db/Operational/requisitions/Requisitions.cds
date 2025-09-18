@@ -10,7 +10,7 @@ using sap.ariba.type as types from '../../types';
     Database Table Name:	Operational Reporting API
 */
 
-entity Requisition_OP: managed, types.customFields {
+entity Requisition_OP_AN: managed, types.customFields {
     key Realm                               : String(50);
     key UniqueName                          : String(50);
 
@@ -91,8 +91,8 @@ entity Requisition_OP: managed, types.customFields {
 
 }
 
-entity Requisition_ApprovalRecords_OP: cuid {
-    key Requisition                         : Association to Requisition_OP;
+entity Requisition_ApprovalRecords_OP_AN: cuid {
+    key Requisition                         : Association to Requisition_OP_AN;
 
     ActivationDate                      : DateTime;
     User                                : types.operationalUser;
@@ -103,8 +103,8 @@ entity Requisition_ApprovalRecords_OP: cuid {
     State                               : Integer;
 }
 
-entity Requisition_ApprovalRequests_OP: cuid {
-    key Requisition                     : Association to Requisition_OP;
+entity Requisition_ApprovalRequests_OP_AN: cuid {
+    key Requisition                     : Association to Requisition_OP_AN;
 
     ActivationDate                      : DateTime;
     LastModified                        : DateTime;
@@ -132,15 +132,15 @@ entity Requisition_ApprovalRequests_OP: cuid {
     Approvers                            : Composition of many Requisition_ApprovalRequests_Approver_OP on Approvers.RequisitionApprovalRequests = $self;
   
 }
-entity Requisition_ApprovalRequests_Approver_OP: cuid{
-    key RequisitionApprovalRequests         : Association to Requisition_ApprovalRequests_OP;
+entity Requisition_ApprovalRequests_Approver_OP_AN: cuid{
+    key RequisitionApprovalRequests         : Association to Requisition_ApprovalRequests_OP_AN;
     UniqueName                          : String(255) default '';
     PasswordAdapter                     : String(50) default '';
     
 }
 
-entity Requisition_LineItem_OP: cuid {
-    key Requisition                         : Association to Requisition_OP;
+entity Requisition_LineItem_OP_AN: cuid {
+    key Requisition                         : Association to Requisition_OP_AN;
 
     ItemCategory                        : types.itemCategory;
     ExpectedValue                       : types.money;
@@ -229,8 +229,8 @@ entity Requisition_LineItem_OP: cuid {
 }
 
 
-entity Requisition_LineItem_SplitAccountings_OP: cuid {
-    key LineItem                    : Association to Requisition_LineItem_OP;
+entity Requisition_LineItem_SplitAccountings_OP_AN: cuid {
+    key LineItem                    : Association to Requisition_LineItem_OP_AN;
         PONumber                    : String(50);
         ERPSplitValue               : String(100);
         Percentage                  : Double;

@@ -2,7 +2,10 @@
   "status": "published",
   "documentType": "SMProjectInfo",
   "selectAttributes": [
+    "Realm",
     "ProjectId",
+    "TimeCreated",
+    "TimeUpdated",
     "SourceSystem",
     "LegalApprovalLevel",
     "FinanceApprovalLevel",
@@ -17,15 +20,33 @@
   ],
   "filterExpressions": [
     {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
       "name": "updatedDateTo",
       "field": "TimeUpdated",
       "op": "<=",
       "defaultValue": null
     },
     {
-      "name": "updatedDateFrom",
-      "field": "TimeUpdated",
-      "op": ">",
+      "name": "projectId",
+      "field": "ProjectId",
+      "op": "=",
+      "defaultValue": null
+    },
+    {
+      "name": "riskScore",
+      "field": "RiskScore",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
+      "name": "isLegacy",
+      "field": "IsLegacy",
+      "op": "=",
       "defaultValue": null
     }
   ]
