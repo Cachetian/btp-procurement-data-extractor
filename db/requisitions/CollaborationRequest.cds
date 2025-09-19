@@ -12,7 +12,7 @@ using sap.ariba.type as types from '../types';
 
 */
 
-entity CollaborationRequest: managed,types.customFields  {
+entity CollaborationRequest_AN: managed,types.customFields  {
     key Realm                               : String(50);
     key RequisitionId                       : String(75);
     key RequisitionLineNumber               : Integer;
