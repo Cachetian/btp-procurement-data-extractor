@@ -1,7 +1,7 @@
 namespace sap.ariba;
 using { managed,cuid } from '@sap/cds/common';
 
-using sap.ariba.type as types from '../types';
+using sap.ariba.type as types from '../../types';
 /**
     Name:	Sales Contract Workspace (Procurement)
     Class Name:	ariba.analytics.fact.GeneralContractWorkspace
@@ -56,35 +56,35 @@ entity GeneralContractWorkspace_AN: managed,types.customFields  {
         NoticePeriod                    : Double;
         LastPublishedDate               : types.day;
 
-        Commodity                       : Composition of many ContractWorkspaces_Commodity on Commodity.ContractWorkspace = $self;
-        Organization                    : Composition of many ContractWorkspaces_Organization on Organization.ContractWorkspace = $self;
-        Region                          : Composition of many ContractWorkspaces_Region on Region.ContractWorkspace = $self;
-        AffectedParties                 : Composition of many ContractWorkspaces_AffectedParties on AffectedParties.ContractWorkspace = $self;
-        AllOwners                       : Composition of many ContractWorkspaces_AllOwners on AllOwners.ContractWorkspace = $self;
+        Commodity                       : Composition of many GeneralContractWorkspace_Commodity_AN on Commodity.ContractWorkspace = $self;
+        Organization                    : Composition of many GeneralContractWorkspace_Organization_AN on Organization.ContractWorkspace = $self;
+        Region                          : Composition of many GeneralContractWorkspace_Region_AN on Region.ContractWorkspace = $self;
+        AffectedParties                 : Composition of many GeneralContractWorkspace_AffectedParties_AN on AffectedParties.ContractWorkspace = $self;
+        AllOwners                       : Composition of many GeneralContractWorkspace_AllOwners_AN on AllOwners.ContractWorkspace = $self;
 
 }
 
-entity ContractWorkspaces_Commodity_AN:  cuid  {
+entity GeneralContractWorkspace_Commodity_AN:  cuid  {
     Commodity                           : types.commodity;
-    ContractWorkspace                   : Association to ContractWorkspaces_AN;
+    ContractWorkspace                   : Association to GeneralContractWorkspace_AN;
 }
 
-entity ContractWorkspaces_Organization_AN:  cuid  {
+entity GeneralContractWorkspace_Organization_AN:  cuid  {
     Organization                        : types.organization;
-    ContractWorkspace                   : Association to ContractWorkspaces_AN;
+    ContractWorkspace                   : Association to GeneralContractWorkspace_AN;
 }
 
-entity ContractWorkspaces_Region_AN:  cuid  {
+entity GeneralContractWorkspace_Region_AN:  cuid  {
     Region                              : types.region;
-    ContractWorkspace                   : Association to ContractWorkspaces_AN;
+    ContractWorkspace                   : Association to GeneralContractWorkspace_AN;
 }
 
-entity ContractWorkspaces_AffectedParties_AN:  cuid  {
+entity GeneralContractWorkspace_AffectedParties_AN:  cuid  {
     AffectedParties                     : types.supplier;
-    ContractWorkspace                   : Association to ContractWorkspaces_AN;
+    ContractWorkspace                   : Association to GeneralContractWorkspace_AN;
 }
 
-entity ContractWorkspaces_AllOwners_AN:  cuid  {
+entity GeneralContractWorkspace_AllOwners_AN:  cuid  {
     AllOwners                           : types.contact;
-    ContractWorkspace                   : Association to ContractWorkspaces_AN;
+    ContractWorkspace                   : Association to GeneralContractWorkspace_AN;
 }

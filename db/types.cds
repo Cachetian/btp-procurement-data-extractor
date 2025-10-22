@@ -521,6 +521,11 @@ type projectInfo {
     SourceSystem            : String(100);
 }
 
+type srProjectInfo {
+    ProjectId               : String(50);
+    SourceSystem            : String(100);
+}
+
 type purchasingCompany: {
     CompanyId:          String(50);
     BusinessUnitId:     String(50);

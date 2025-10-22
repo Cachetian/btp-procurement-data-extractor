@@ -31,10 +31,10 @@ const srProjectInfoHandler = require('../Analytical/sourcing/srProjectInfoHandle
 const srProjectTaskFactHandler = require('../Analytical/sourcing/srProjectTaskFactHandler');
 const srProjectTaskApprovalFlowFactHandler = require('../Analytical/sourcing/srProjectTaskApprovalFlowFactHandler');
 const projectTaskFactHandler = require('../Analytical/sourcing/projectTaskFactHandler');
-const contractLineItemDocumentFactHandler = require('../contracts/contractLineItemDocumentFactHandler');
-const generalContractWorkspaceFactHandler = require('../contracts/generalContractWorkspaceFactHandler');
-const salesContractWorkspaceFactHandler = require('../contracts/salesContractWorkspaceFactHandler');
-const collaborationRequestFactHandler = require('../requisitions/collaborationRequestFactHandler');
+const contractLineItemDocumentFactHandler = require('../Analytical/contracts/contractLineItemDocumentFactHandler');
+const generalContractWorkspaceFactHandler = require('../Analytical/contracts/generalContractWorkspaceFactHandler');
+const salesContractWorkspaceFactHandler = require('../Analytical/contracts/salesContractWorkspaceFactHandler');
+const collaborationRequestFactHandler = require('../Analytical/requisitions/collaborationRequestFactHandler');
 
 const receiptsFactHandler = require('../Analytical/receipt/receiptsFactHandler');
 const receiptsOSHandler = require('../Operational/receipts/receiptsOSHandler');
@@ -81,6 +81,7 @@ const companyCodeDimHandler = require('../Analytical/general/companyCodeDimHandl
 
 const projectsFactHandler = require('../Analytical/sourcing/projectsFactHandler');
 const projectInfoFactHandler = require('../Analytical/sourcing/projectInfoFactHandler');
+const documentFactHandler = require('../Analytical/sourcing/documentFactHandler');
 const servicesProcurementWorkspacesFactHandler = require('../Analytical/procurement/servicesProcurementWorkspacesFactHandler');
 
 //Operational Data Handlers
@@ -263,6 +264,9 @@ async function ProcessData(viewTemplateName,Records,realm){
                     break;
                 case "EXT_ProjectInfo":
                     affectedRows = await projectInfoFactHandler.insertData(Records, realm)
+                    break;
+                case "EXT_Document":
+                    affectedRows = await documentFactHandler.insertData(Records, realm)
                     break;
                 case "EXT_ServicesProcurementWorkspaces":
                     affectedRows = await servicesProcurementWorkspacesFactHandler.insertData(Records, realm)

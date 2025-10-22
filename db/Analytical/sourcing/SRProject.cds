@@ -1,6 +1,6 @@
 namespace sap.ariba;
 using { managed, cuid } from '@sap/cds/common';
-using sap.ariba.type as types from '../types';
+using sap.ariba.type as types from '../../types';
 
 /**
     Name:           Sourcing Request Project
@@ -30,7 +30,7 @@ entity SRProject_AN : managed, types.customFields {
     ProjectInfo                 : types.projectInfo;
     DependsOnProject            : types.projectInfo;
     ContainerProject            : types.projectInfo;
-    SRProjectInfo               : types.SRProjectInfo;
+    SRProjectInfo               : types.srProjectInfo;
 
     BeginDate                   : types.day;
     DueDate                     : types.day;
@@ -48,11 +48,10 @@ entity SRProject_AN : managed, types.customFields {
     IsTestProject               : Boolean;
 
     // Associations
-    Commodity                   : Composition of many SRProject_Commodity on Commodity.SRProject = $self;
-    Organization                : Composition of many SRProject_Organization on Organization.SRProject = $self;
-    Region                      : Composition of many SRProject_Region on Region.SRProject = $self;
-    AllOwners                   : Composition of many SRProject_AllOwners on AllOwners.SRProject = $self;
-    SRComment                   : Composition of many SRProject_SRComment on SRComment.SRProject = $self;
+    Commodity                   : Composition of many SRProject_Commodity_AN on Commodity.SRProject = $self;
+    Organization                : Composition of many SRProject_Organization_AN on Organization.SRProject = $self;
+    Region                      : Composition of many SRProject_Region_AN on Region.SRProject = $self;
+    AllOwners                   : Composition of many SRProject_AllOwners_AN on AllOwners.SRProject = $self;
 }
 
 entity SRProject_Commodity_AN : cuid {
@@ -72,10 +71,5 @@ entity SRProject_Region_AN : cuid {
 
 entity SRProject_AllOwners_AN : cuid {
     AllOwners   : types.user;
-    SRProject   : Association to SRProject_AN;
-}
-
-entity SRProject_SRComment_AN : cuid {
-    SRComment   : types.SRComment;
     SRProject   : Association to SRProject_AN;
 }

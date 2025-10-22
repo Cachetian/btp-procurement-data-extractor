@@ -2,7 +2,7 @@
 
 const cds = require("@sap/cds");
 const logger = cds.log('logger');
-const utils = require("../../utils/Utils");
+const utils = require("../../../utils/Utils");
 
 
 //Amount fields in object

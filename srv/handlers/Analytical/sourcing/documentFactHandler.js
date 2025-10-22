@@ -16,7 +16,7 @@ function insertData(aData, realm) {
             return;
         }
 
-        logger.info(`Processing ${aData.length} SRProject records`);
+        logger.info(`Processing ${aData.length} Document records`);
         let aCleaningProperties = _getAmountPropertiesForDataCleaning();
         let i = 0;
 
@@ -26,17 +26,17 @@ function insertData(aData, realm) {
 
             try {
                 let res = await srv.run(
-                    SELECT.from("sap.ariba.SRProject").where({
+                    SELECT.from("sap.ariba.Document").where({
                         Realm: oDataCleansed.Realm,
                         ProjectId: oDataCleansed.ProjectId
                     })
                 );
 
                 if (res.length === 0) {
-                    await srv.run(INSERT.into("sap.ariba.SRProject").entries(oDataCleansed));
+                    await srv.run(INSERT.into("sap.ariba.Document").entries(oDataCleansed));
                 } else {
                     await srv.run(
-                        UPDATE("sap.ariba.SRProject")
+                        UPDATE("sap.ariba.Document")
                             .set(oDataCleansed)
                             .where({
                                 Realm: oDataCleansed.Realm,
@@ -45,7 +45,7 @@ function insertData(aData, realm) {
                     );
                 }
             } catch (e) {
-                logger.error(`Error inserting SRProject: ${e}`);
+                logger.error(`Error inserting Document: ${e}`);
                 await srv.rollback();
                 reject(e);
                 break;
@@ -53,7 +53,7 @@ function insertData(aData, realm) {
 
             i++;
             if (i % 500 === 0) {
-                logger.info(`Upserted ${i} SRProject records`);
+                logger.info(`Upserted ${i} Document records`);
             }
         }
 

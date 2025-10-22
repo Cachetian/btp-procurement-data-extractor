@@ -21,7 +21,7 @@ entity Contracts_OP : managed, types.customFields {
         TimeUpdated                      : DateTime;
         InitialUniqueName                : String(255);
         Name                             : String(128);
-        Description                      : String(1000);
+        Description                      : String(2000);
         ExternalID                       : String(100);
         ProcurementUnit                  : types.procurementUnit;
         CompanyCode                      : types.genericRoot;
