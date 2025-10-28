@@ -526,6 +526,12 @@ type srProjectInfo {
     SourceSystem            : String(100);
 }
 
+type serviceCategoryDefinition {
+    CategoryDefinitionId               : String(25);
+    CategoryDefinition                 : String(255);
+    CategoryDriver                     : String(128);
+}
+
 type purchasingCompany: {
     CompanyId:          String(50);
     BusinessUnitId:     String(50);

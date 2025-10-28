@@ -68,6 +68,7 @@ using from './Operational/receipts/Receipt';
 
 //requisitions
 using from './Analytical/requisitions/RequisitionLineItems';
+using from './Analytical/requisitions/CollaborationRequest';
 using from './Operational/requisitions/Requisitions';
 
 //sourcing

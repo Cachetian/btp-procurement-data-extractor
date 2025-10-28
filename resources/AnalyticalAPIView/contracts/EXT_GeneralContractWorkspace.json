@@ -1,6 +1,6 @@
 {
 
-    "status": "draft",
+    "status": "published",
     "documentType": "GeneralContractWorkspaceFact",
     "selectAttributes": [
         "LoadCreateTime",
