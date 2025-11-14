@@ -10,9 +10,10 @@ using sap.ariba.type as types from '../../types';
 */
 entity UserAbilityFact_AN : managed, types.customFields {
 
-  key Realm          : String(50);
-  key UserId         : String(50);
-  key SourceSystemId : String(100);
+  key Realm                  : String(50);
+  key UserDataUserId         : String(50);
+  key UserDataSourceSystem : String(100);
+  key SourceSystemId         : String(100);
 
 
       LoadCreateTime : DateTime;

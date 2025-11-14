@@ -20,5 +20,5 @@ entity Document_AN: managed,types.customFields   {
     Title                                   : String(259);
     TimeUpdated                             : DateTime;
     ProjectInfo                             : types.projectInfo;
-    CreateDate                              : DateTime;
+    CreateDate                              : types.day;
 }

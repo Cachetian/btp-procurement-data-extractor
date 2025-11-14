@@ -15,7 +15,7 @@ entity SMProjectInfo_AN : managed, types.customFields {
     TimeCreated    : DateTime;
     TimeUpdated    : DateTime;
    
-    SourceSystem   : types.sourceSystem;
+    SourceSystem   : String(100);
 
     LegalApprovalLevel          : Integer;
     FinanceApprovalLevel        : Integer;

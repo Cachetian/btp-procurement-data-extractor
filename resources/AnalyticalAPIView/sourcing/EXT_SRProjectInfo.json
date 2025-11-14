@@ -1,13 +1,8 @@
 {
   "status": "published",
-  "documentType": "SRProjectInfo",
+  "documentType": "SRProjectInfoDim",
   "selectAttributes": [
-    "Realm",
     "ProjectId",
-    "TimeCreated",
-    "TimeUpdated",
-    "LoadCreateTime",
-    "LoadUpdateTime",
     "SourceSystem",
     "EngagementRequestStatus",
     "IssuePrimarySourceId",
@@ -32,36 +27,6 @@
       "name": "updatedDateTo",
       "field": "TimeUpdated",
       "op": "<=",
-      "defaultValue": null
-    },
-    {
-      "name": "projectId",
-      "field": "ProjectId",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "sourceSystem",
-      "field": "SourceSystem",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "riskRating",
-      "field": "InherentRiskRating",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "engagementRequestStatus",
-      "field": "EngagementRequestStatus",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "isRiskLiable",
-      "field": "IsRiskLiable",
-      "op": "=",
       "defaultValue": null
     }
   ]

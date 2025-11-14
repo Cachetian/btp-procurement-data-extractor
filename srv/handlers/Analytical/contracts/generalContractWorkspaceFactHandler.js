@@ -33,7 +33,7 @@ function insertData(aData, realm)  {
             var oDataCleansed = utils.processCustomFields(oDataCleansed);
             try {
                 //Select record by Unique key
-                let res =  await srv.run ( SELECT.from ("sap.ariba.GeneralContractWorkspace").where(
+                let res =  await srv.run ( SELECT.from ("sap.ariba.GeneralContractWorkspace_AN").where(
                     { 
                         Realm : oDataCleansed.Realm ,
                         ProjectId : oDataCleansed.ProjectId }  )
@@ -41,7 +41,7 @@ function insertData(aData, realm)  {
 
                  if(res.length==0){
                      //New record, insert
-                    await srv.run( INSERT .into ("sap.ariba.GeneralContractWorkspace") .entries (oDataCleansed) );
+                    await srv.run( INSERT .into ("sap.ariba.GeneralContractWorkspace_AN") .entries (oDataCleansed) );
                                   
                  }else{
                      //Update existing record
@@ -62,7 +62,7 @@ function insertData(aData, realm)  {
                      let regions = oDataCleansed["Region"];
                      delete oDataCleansed["Region"];           
                     
-                     await srv.run ( UPDATE ("sap.ariba.GeneralContractWorkspace") .set (oDataCleansed) .where(
+                     await srv.run ( UPDATE ("sap.ariba.GeneralContractWorkspace_AN") .set (oDataCleansed) .where(
                         { 
                             Realm : oDataCleansed.Realm ,
                             ProjectId : oDataCleansed.ProjectId } )

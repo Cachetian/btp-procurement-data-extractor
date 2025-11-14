@@ -1203,3 +1203,15 @@ type poAddress: {
 type buyerItemMaster: {
     BuyerPartNumber : String(255);
 }
+
+type srComment {
+    ProjectId                 : String(50);
+    SourceSystem              : String(100);
+    CommentId                 : String(50);
+    CommentText               : String(1000);
+    CommentAdded              : DateTime;
+    CommentAddedByUserId      : String(255);
+    CommentAddedByUserName    : String(255);
+    AclId                     : Integer;
+    
+}

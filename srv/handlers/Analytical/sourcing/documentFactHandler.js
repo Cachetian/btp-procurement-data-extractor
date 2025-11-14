@@ -26,26 +26,26 @@ function insertData(aData, realm) {
 
             try {
                 let res = await srv.run(
-                    SELECT.from("sap.ariba.Document").where({
+                    SELECT.from("sap.ariba.Document_AN").where({
                         Realm: oDataCleansed.Realm,
-                        ProjectId: oDataCleansed.ProjectId
+                        InternalId: oDataCleansed.InternalId
                     })
                 );
 
                 if (res.length === 0) {
-                    await srv.run(INSERT.into("sap.ariba.Document").entries(oDataCleansed));
+                    await srv.run(INSERT.into("sap.ariba.Document_AN").entries(oDataCleansed));
                 } else {
                     await srv.run(
-                        UPDATE("sap.ariba.Document")
+                        UPDATE("sap.ariba.Document_AN")
                             .set(oDataCleansed)
                             .where({
                                 Realm: oDataCleansed.Realm,
-                                ProjectId: oDataCleansed.ProjectId
+                                InternalId: oDataCleansed.InternalId
                             })
                     );
                 }
             } catch (e) {
-                logger.error(`Error inserting Document: ${e}`);
+                logger.error(`Error inserting Document_AN: ${e}`);
                 await srv.rollback();
                 reject(e);
                 break;
@@ -53,7 +53,7 @@ function insertData(aData, realm) {
 
             i++;
             if (i % 500 === 0) {
-                logger.info(`Upserted ${i} Document records`);
+                logger.info(`Upserted ${i} Document_AN records`);
             }
         }
 

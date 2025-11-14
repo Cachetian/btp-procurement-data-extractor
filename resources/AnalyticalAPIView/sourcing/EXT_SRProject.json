@@ -1,8 +1,7 @@
 {
   "status": "published",
-  "documentType": "SRProject",
+  "documentType": "SRProjectFact",
   "selectAttributes": [
-    "Realm",
     "ProjectId",
     "TimeCreated",
     "TimeUpdated",
@@ -14,7 +13,6 @@
     "OnTimeOrLate",
     "Owner",
     "SourceSystem",
-    "Supplier",
     "Process",
     "ProjectInfo",
     "DependsOnProject",
@@ -33,11 +31,11 @@
     "ProcessStatus",
     "LastPrStatus",
     "IsTestProject",
-    "Commodity",
-    "Organization",
-    "Region",
-    "AllOwners",
-    "SRComment"
+    "Commodity.Commodity",
+    "Organization.Organization",
+    "Region.Region",
+    "AllOwners.AllOwners",
+    "SRComment.SRComment"
   ],
   "filterExpressions": [
     {
@@ -50,36 +48,6 @@
       "name": "updatedDateTo",
       "field": "TimeUpdated",
       "op": "<=",
-      "defaultValue": null
-    },
-    {
-      "name": "projectId",
-      "field": "ProjectId",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "status",
-      "field": "Status",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "owner",
-      "field": "Owner",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "sourceSystem",
-      "field": "SourceSystem",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "isTestProject",
-      "field": "IsTestProject",
-      "op": "=",
       "defaultValue": null
     }
   ]

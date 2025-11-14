@@ -1,11 +1,10 @@
 {
     "status": "published",
-    "documentType": "ContractLineItemDocumentFactFact",
+    "documentType": "ContractLineItemDocumentFact",
     "selectAttributes": [
         "LoadCreateTime",
         "LoadUpdateTime",
         "DocumentId",
-        "EffectiveDate",
         "Title",
         "VersionNumber",
         "AllowFormulas",

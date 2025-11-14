@@ -15,9 +15,7 @@ entity SRProjectInfo_AN : managed, types.customFields {
     
     TimeCreated                 : DateTime;
     TimeUpdated                 : DateTime;
-    LoadCreateTime              : DateTime;
-    LoadUpdateTime              : DateTime;
-    SourceSystem                : types.sourceSystem;
+    SourceSystem                : String(100);
     EngagementRequestStatus     : String(60);
     IssuePrimarySourceId        : String(50);
     IssueSecondarySourceId      : String(50);
@@ -29,5 +27,5 @@ entity SRProjectInfo_AN : managed, types.customFields {
     InherentRiskRating          : String(100);
     SourceProject               : String(50);
     SourceProjectId             : String(50);
-    AclId                       : Integer;
+    AclId                       : Double;
 }

@@ -8,6 +8,16 @@ function _getAmountPropertiesForDataCleaning() {
     return [];
 }
 
+function _FlatteningData (oData) {
+
+    //Structure flattening
+    oData.UserDataUserId = oData.UserData.UserId;
+    oData.UserDataSourceSystem = oData.UserData.SourceSystem;
+    oData.SourceSystemId = oData.SourceSystem.SourceSystemId;
+
+    return oData;
+}
+
 function insertData(aData, realm) {
     return new Promise(async (resolve, reject) => {
         const srv = cds.transaction(aData);
@@ -22,30 +32,35 @@ function insertData(aData, realm) {
 
         for (const oData of aData) {
             let oDataCleansed = utils.cleanData(aCleaningProperties, oData, realm);
+            oDataCleansed = _FlatteningData(oData);
             oDataCleansed = utils.processCustomFields(oDataCleansed);
 
             try {
                 let res = await srv.run(
-                    SELECT.from("sap.ariba.UserAbility").where({
+                    SELECT.from("sap.ariba.UserAbilityFact_AN").where({
                         Realm: oDataCleansed.Realm,
-                        UserData: oDataCleansed.UserData
+                        UserDataUserId: oDataCleansed.UserDataUserId,
+                        UserDataSourceSystem: oDataCleansed.UserDataSourceSystem,
+                        SourceSystemId: oDataCleansed.SourceSystemId
                     })
                 );
 
                 if (res.length === 0) {
-                    await srv.run(INSERT.into("sap.ariba.UserAbility").entries(oDataCleansed));
+                    await srv.run(INSERT.into("sap.ariba.UserAbilityFact_AN").entries(oDataCleansed));
                 } else {
                     await srv.run(
-                        UPDATE("sap.ariba.UserAbility")
+                        UPDATE("sap.ariba.UserAbilityFact_AN")
                             .set(oDataCleansed)
                             .where({
                                 Realm: oDataCleansed.Realm,
-                                UserData: oDataCleansed.UserData
+                                UserDataUserId: oDataCleansed.UserDataUserId,
+                                UserDataSourceSystem: oDataCleansed.UserDataSourceSystem,
+                                SourceSystemId: oDataCleansed.SourceSystemId
                             })
                     );
                 }
             } catch (e) {
-                logger.error(`Error inserting UserAbility: ${e}`);
+                logger.error(`Error inserting UserAbilityFact_AN: ${e}`);
                 await srv.rollback();
                 reject(e);
                 break;
@@ -53,7 +68,7 @@ function insertData(aData, realm) {
 
             i++;
             if (i % 500 === 0) {
-                logger.info(`Upserted ${i} UserAbility records`);
+                logger.info(`Upserted ${i} UserAbilityFact_AN records`);
             }
         }
 

@@ -8,8 +8,7 @@
         "Description",
         "DocumentType",
         "Title",
-        "ProjectId",
-        "SourceSystem",
+        "ProjectInfo",
         "TimeCreated",
         "TimeUpdated",
         "CreateDate"

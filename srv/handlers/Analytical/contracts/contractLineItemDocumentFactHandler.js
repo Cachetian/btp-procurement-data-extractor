@@ -28,7 +28,7 @@ function insertData(aData, realm)  {
 
             try {
                 //Select record by Unique key
-                let res =  await srv.run ( SELECT.from ("sap.ariba.ContractLineItemDocument").where(
+                let res =  await srv.run ( SELECT.from ("sap.ariba.ContractLineItemDocument_AN").where(
                     { 
                         Realm : oDataCleansed.Realm ,
                         DocumentId : oDataCleansed.DocumentId }  )
@@ -36,11 +36,11 @@ function insertData(aData, realm)  {
 
                  if(res.length==0){
                      //New record, insert
-                    await srv.run( INSERT .into ("sap.ariba.ContractLineItemDocument") .entries (oDataCleansed) );
+                    await srv.run( INSERT .into ("sap.ariba.ContractLineItemDocument_AN") .entries (oDataCleansed) );
                                   
                  }else{
                      //Update existing record
-                    await srv.run ( UPDATE ("sap.ariba.ContractLineItemDocument") .set (oDataCleansed) .where(
+                    await srv.run ( UPDATE ("sap.ariba.ContractLineItemDocument_AN") .set (oDataCleansed) .where(
                         { 
                             Realm : oDataCleansed.Realm ,
                             DocumentId : oDataCleansed.DocumentId } )

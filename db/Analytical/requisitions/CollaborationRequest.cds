@@ -14,13 +14,13 @@ using sap.ariba.type as types from '../../types';
 
 entity CollaborationRequest_AN: managed,types.customFields  {
     key Realm                               : String(50);
-    key RequisitionId                       : String(75);
-    key RequisitionLineNumber               : Integer;
-
+    key CollaborationRequestId              : String(75);
+    key CRLineNumber                        : Integer;
+    
+        RequisitionLineNumber                 : Integer;
         TimeCreated                           : DateTime;
         TimeUpdated                           : DateTime;
-        CollaborationRequestId                : String(75);
-        CRLineNumber                          : Integer;
+        RequisitionId                         : String(75);
         Requisition                           : String(765);
         AmountProposed                        : Double;
         ResponseTime                          : Double;
@@ -41,7 +41,7 @@ entity CollaborationRequest_AN: managed,types.customFields  {
         RequestedPayRate                      : Double;
         ExpenseAmount                         : Double;
         CurrentSupplierResponse               : String(75);
-        Requester                             : String(25);
+        Requester                             : types.contact;
         RequestType                           : String(75);
         Quantity                              : Double;
         UnitOfMeasure                         : types.uom;
@@ -52,7 +52,7 @@ entity CollaborationRequest_AN: managed,types.customFields  {
         DeclineReason                         : String(765);
         CancelReason                          : String(765);
         AssociatedCollaborationRequestId      : String(75);
-        StartDate                             : DateTime;
-        EndDate                               : DateTime;
+        StartDate                             : types.day;
+        EndDate                               : types.day;
         WorkLocation                          : types.location;
 }

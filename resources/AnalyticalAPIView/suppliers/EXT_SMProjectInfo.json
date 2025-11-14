@@ -1,8 +1,7 @@
 {
   "status": "published",
-  "documentType": "SMProjectInfo",
+  "documentType": "SMProjectInfoDim",
   "selectAttributes": [
-    "Realm",
     "ProjectId",
     "TimeCreated",
     "TimeUpdated",
@@ -29,24 +28,6 @@
       "name": "updatedDateTo",
       "field": "TimeUpdated",
       "op": "<=",
-      "defaultValue": null
-    },
-    {
-      "name": "projectId",
-      "field": "ProjectId",
-      "op": "=",
-      "defaultValue": null
-    },
-    {
-      "name": "riskScore",
-      "field": "RiskScore",
-      "op": ">=",
-      "defaultValue": null
-    },
-    {
-      "name": "isLegacy",
-      "field": "IsLegacy",
-      "op": "=",
       "defaultValue": null
     }
   ]

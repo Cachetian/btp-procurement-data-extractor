@@ -15,7 +15,6 @@ entity ContractLineItemDocument_AN : managed,types.customFields  {
     Key DocumentId                                      : String(150);
         LoadCreateTime                                  : DateTime;
         LoadUpdateTime                                  : DateTime;
-        EffectiveDate                                   : types.day;
         Title                                           : String(765);
         VersionNumber                                   : Integer;
         AllowFormulas                                   : Boolean;
@@ -28,8 +27,7 @@ entity ContractLineItemDocument_AN : managed,types.customFields  {
         MaxVolumeThreshold                              : Integer;
         VolumeScaleEnabled                              : Boolean;
         AclId                                           : Double;
-        CreatedDate                                     : String(25);
+        CreatedDate                                     : types.day;
         Contract                                        : types.contract;
         SourceSystem                                    : types.sourceSystem;
-        //////
 }

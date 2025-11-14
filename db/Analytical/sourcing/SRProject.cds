@@ -25,7 +25,6 @@ entity SRProject_AN : managed, types.customFields {
     Owner                       : types.owner;
     SourceSystem                : types.sourceSystem;
 
-    Supplier                    : types.supplier;
     Process                     : types.process;
     ProjectInfo                 : types.projectInfo;
     DependsOnProject            : types.projectInfo;
@@ -52,6 +51,7 @@ entity SRProject_AN : managed, types.customFields {
     Organization                : Composition of many SRProject_Organization_AN on Organization.SRProject = $self;
     Region                      : Composition of many SRProject_Region_AN on Region.SRProject = $self;
     AllOwners                   : Composition of many SRProject_AllOwners_AN on AllOwners.SRProject = $self;
+    SRComment                   : Composition of many SRProject_SRComment_AN on SRComment.SRProject = $self;
 }
 
 entity SRProject_Commodity_AN : cuid {
@@ -71,5 +71,10 @@ entity SRProject_Region_AN : cuid {
 
 entity SRProject_AllOwners_AN : cuid {
     AllOwners   : types.user;
+    SRProject   : Association to SRProject_AN;
+}
+
+entity SRProject_SRComment_AN : cuid {
+    SRComment   : types.srComment;
     SRProject   : Association to SRProject_AN;
 }

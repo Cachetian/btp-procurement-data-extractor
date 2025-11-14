@@ -28,27 +28,28 @@ async function insertData(aData, realm)  {
         let i=0;
         for(const oData of aData) {
             
-            var oDataCleansed = utils.cleanData(aCleaningProperties, oData, realm);            
+            var oDataCleansed = utils.cleanData(aCleaningProperties, oData, realm);  
+            var oDataCleansed = utils.removeNullValues(oDataCleansed);
             var oDataCleansed = utils.processCustomFields(oDataCleansed);
             try {
                 //Select record by Unique key
-                let res =  await srv.run ( SELECT.from ("sap.ariba.CollaborationRequest").where(
+                let res =  await srv.run ( SELECT.from ("sap.ariba.CollaborationRequest_AN").where(
                     {
-                      RequisitionId : oDataCleansed.RequisitionId ,
-                      RequisitionLineNumber : oDataCleansed.RequisitionLineNumber ,
+                      RequisitionId : oDataCleansed.CollaborationRequestId ,
+                      RequisitionLineNumber : oDataCleansed.CRLineNumber ,
                       Realm : oDataCleansed.Realm } )
                  );
 
                  if(res.length==0){
                      //New record, insert
-                    await srv.run( INSERT .into ("sap.ariba.CollaborationRequest") .entries (oDataCleansed) );
+                    await srv.run( INSERT .into ("sap.ariba.CollaborationRequest_AN") .entries (oDataCleansed) );
                                   
                  }else{
                      //Update existing record
-                    await srv.run ( UPDATE ("sap.ariba.CollaborationRequest") .set (oDataCleansed) .where(
+                    await srv.run ( UPDATE ("sap.ariba.CollaborationRequest_AN") .set (oDataCleansed) .where(
                         {
-                            RequisitionId : oDataCleansed.RequisitionId ,
-                            RequisitionLineNumber : oDataCleansed.RequisitionLineNumber ,
+                            RequisitionId : oDataCleansed.CollaborationRequestId ,
+                            RequisitionLineNumber : oDataCleansed.CRLineNumber ,
                             Realm : oDataCleansed.Realm  } )
                      );
                   
