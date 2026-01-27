@@ -6,6 +6,8 @@
         "RequisitionLineNumber",
         "TimeCreated",
         "TimeUpdated",
+        "LoadCreateTime",
+        "LoadUpdateTime",
         "CollaborationRequestId",
         "CRLineNumber",
         "Requisition",

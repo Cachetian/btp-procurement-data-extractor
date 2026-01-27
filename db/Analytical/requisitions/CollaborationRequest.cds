@@ -20,6 +20,8 @@ entity CollaborationRequest_AN: managed,types.customFields  {
         RequisitionLineNumber                 : Integer;
         TimeCreated                           : DateTime;
         TimeUpdated                           : DateTime;
+        LoadCreateTime                        : DateTime;
+        LoadUpdateTime                        : DateTime;
         RequisitionId                         : String(75);
         Requisition                           : String(765);
         AmountProposed                        : Double;

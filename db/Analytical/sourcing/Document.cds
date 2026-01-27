@@ -13,6 +13,8 @@ using sap.ariba.type as types from '../../types';
 entity Document_AN: managed,types.customFields   {
     key Realm                               : String(50);
     key InternalId                          : String(150);
+    LoadCreateTime                          : DateTime;
+    LoadUpdateTime                          : DateTime;
     TimeCreated                             : DateTime;
     Status                                  : String(90);
     Description                             : String(4000);

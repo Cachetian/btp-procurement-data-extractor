@@ -1,11 +1,11 @@
 {
-    "xsappname" : "btp-procurement-data-extractor",
+    "xsappname" : "kit-data-lake-btp-extractor",
     "tenant-mode" : "dedicated",
     "scopes": [
       {
         "name": "$XSAPPNAME.JobScheduler",
         "description": "JobScheduler",
-        "grant-as-authority-to-apps": ["$XSSERVICENAME(btp-procurement-data-extractor-jobscheduler)"]
+        "grant-as-authority-to-apps": ["$XSSERVICENAME(kit-data-lake-jobscheduler)"]
       }
     ],
     "authorities":["$ACCEPT_GRANTED_AUTHORITIES"],
