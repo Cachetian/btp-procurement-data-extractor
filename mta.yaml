@@ -126,3 +126,4 @@ resources:
    parameters:
      service-plan: standard
      service: cloud-logging
+     
