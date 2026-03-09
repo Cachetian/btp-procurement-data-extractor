@@ -3,8 +3,8 @@
 ## language=nodejs; multiTenant=false
 ## approuter=
 _schema-version: '3.1'
-ID: kit-data-lake-btp-extractor
-version: 1.0.11
+ID: btp-procurement-data-extractor
+version: 1.0.0
 description: "SAP Ariba Extraction Data Lake"
 parameters:
   enable-parallel-deployments: true
@@ -13,12 +13,12 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
-        - npx cds build
+        - npx cds build --production
 
 modules:
 
  # --------------------- SERVER MODULE ------------------------
- - name: kit-data-lake-btp-extractor-srv
+ - name: btp-procurement-data-extractor-srv
  # ------------------------------------------------------------
    type: nodejs
    path: gen/srv
@@ -26,33 +26,32 @@ modules:
      ignore: ["node_modules/"]
    parameters:
      buildpack: nodejs_buildpack
-     app-name: kit-data-lake-btp-extractor-srv
+     app-name: btp-procurement-data-extractor-srv
      disk-quota: 1GB
      memory: 1GB
    requires:
     # Resources extracted from CAP configuration
-    - name: kit-data-lake-hana
-    - name: kit-data-lake-btp-uaa
-    - name: kit-data-lake-dest
-    - name: kit-data-lake-conn
-    - name: kit-data-lake-log
-    - name: kit-data-lake-jobscheduler
+    - name: btp-procurement-data-extractor-hana
+    - name: btp-procurement-data-extractor-uaa
+    - name: btp-procurement-data-extractor-dest
+    - name: btp-procurement-data-extractor-conn
+    - name: btp-procurement-data-extractor-log
+    - name: btp-procurement-data-extractor-jobscheduler
    provides:
     - name: srv-api      # required by consumers of CAP services (e.g. approuter)
       public: true
       properties:
         url: ${default-url}
 
- - name: kit-data-lake-extractor-btp-db-deployer
+ - name: btp-procurement-data-extractor-db-deployer
    type: hdb
    path: gen/db
    build-parameters:
     ignore: ["node_modules/"]
    parameters:
     buildpack: nodejs_buildpack
-    deploy-format: incremental
    requires:
-    - name: kit-data-lake-hana
+    - name: btp-procurement-data-extractor-hana
       parameters:
        disk-quota: 256M
        memory: 256M
@@ -66,7 +65,7 @@ modules:
 
 resources:
 # ------------------------------------------------------------
- - name: kit-data-lake-hana
+ - name: btp-procurement-data-extractor-hana
 # ------------------------------------------------------------
    type: com.sap.xs.hdi-container
    parameters:
@@ -86,7 +85,7 @@ resources:
      userprovided-service-name: ${service-name}
 
  # ------------------------------------------------------------
- - name: kit-data-lake-jobscheduler
+ - name: btp-procurement-data-extractor-jobscheduler
  # ------------------------------------------------------------
    type: org.cloudfoundry.managed-service
    parameters:
@@ -96,19 +95,16 @@ resources:
        enable-xsuaa-support: true
 
 # ------------------------------------------------------------
- - name: kit-data-lake-btp-uaa
+ - name: btp-procurement-data-extractor-uaa
 # ------------------------------------------------------------
    type: org.cloudfoundry.managed-service
    parameters:
      service: xsuaa
      service-plan: application
      path: ./xs-security.json
-     config:
-       xsappname: kit-data-lake-btp-extractor
-       tenant-mode: dedicated
 
 # ------------------------------------------------------------
- - name: kit-data-lake-dest
+ - name: btp-procurement-data-extractor-dest
 # ------------------------------------------------------------
    type: org.cloudfoundry.managed-service
    parameters:
@@ -116,7 +112,7 @@ resources:
      service: destination
 
 # ------------------------------------------------------------
- - name: kit-data-lake-conn
+ - name: btp-procurement-data-extractor-conn
 # ------------------------------------------------------------
    type: org.cloudfoundry.managed-service
    parameters:
@@ -124,9 +120,9 @@ resources:
      service: connectivity
 
 # ------------------------------------------------------------
- - name: kit-data-lake-log
+ - name: btp-procurement-data-extractor-log
 # ------------------------------------------------------------
    type: org.cloudfoundry.managed-service
    parameters:
-     service-plan: lite
-     service: application-logs
+     service-plan: standard
+     service: cloud-logging
