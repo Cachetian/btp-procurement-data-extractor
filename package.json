@@ -1,5 +1,5 @@
 {
-  "name": "kit-data-lake-btp-extractor",
+  "name": "btp-procurement-data-extractor",
   "version": "1.0.0",
   "description": "BTP application for extracting procurement data",
   "private": true,
@@ -49,8 +49,8 @@
   "scripts": {
     "start": "cds-serve",
     "debug": "node --inspect node_modules/@sap/cds/bin/cds-serve",
-    "mta:package": "mbt build --mtar mta-kit-data-lake-btp-extractor --platform cf",
-    "mta:deploy": "cf deploy mta_archives/mta-kit-data-lake-btp-extractor.mtar -f",
+    "mta:package": "mbt build --mtar mta-btp-procurement-data-extractor --platform cf",
+    "mta:deploy": "cf deploy mta_archives/mta-btp-procurement-data-extractor.mtar -f",
     "mta:package:deploy": "npm run mta:package && npm run mta:deploy"
   }
 }
