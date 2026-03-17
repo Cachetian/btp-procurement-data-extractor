@@ -1,0 +1,54 @@
+{
+  "status": "published",
+  "documentType": "SRProjectFact",
+  "selectAttributes": [
+    "ProjectId",
+    "TimeCreated",
+    "TimeUpdated",
+    "LoadCreateTime",
+    "LoadUpdateTime",
+    "Description",
+    "Status",
+    "State",
+    "OnTimeOrLate",
+    "Owner",
+    "SourceSystem",
+    "Process",
+    "ProjectInfo",
+    "DependsOnProject",
+    "ContainerProject",
+    "SRProjectInfo",
+    "BeginDate",
+    "DueDate",
+    "EndDate",
+    "EndDateTime",
+    "PrLastStartDate",
+    "PrLastEndDate",
+    "PrExpectedStartDate",
+    "PrExpectedEndDate",
+    "Duration",
+    "AclId",
+    "ProcessStatus",
+    "LastPrStatus",
+    "IsTestProject",
+    "Commodity.Commodity",
+    "Organization.Organization",
+    "Region.Region",
+    "AllOwners.AllOwners",
+    "SRComment.SRComment"
+  ],
+  "filterExpressions": [
+    {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
+      "name": "updatedDateTo",
+      "field": "TimeUpdated",
+      "op": "<=",
+      "defaultValue": null
+    }
+  ]
+}

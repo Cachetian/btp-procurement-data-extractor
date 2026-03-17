@@ -1,0 +1,39 @@
+{
+  "status": "published",
+  "documentType": "UserAbilityFact",
+  "selectAttributes": [
+    "LoadCreateTime",
+    "LoadUpdateTime",
+    "TimeCreated",
+    "TimeUpdated",
+    "UserData",
+    "SourceSystem",
+    "LastLoginDate",
+    "SourcingUser",
+    "ContractsUser",
+    "SPMUser",
+    "HasCreateInternalContractWorkspaceAbility",
+    "HasCreateSalesContractWorkspaceAbility",
+    "HasCreateProcurementContractWorkspaceAbility",
+    "HasCreateSalesContractRequestAbility",
+    "HasCreateSourcingProjectAbility",
+    "HasCreateSPMProjectAbility",
+    "HasCreateSupplierProjectAbility",
+    "HasCreateSQMProjectAbility",
+    "UserCount"
+  ],
+  "filterExpressions": [
+    {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
+      "name": "updatedDateTo",
+      "field": "TimeUpdated",
+      "op": "<=",
+      "defaultValue": null
+    }
+  ]
+}

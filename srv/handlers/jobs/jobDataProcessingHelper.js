@@ -26,9 +26,15 @@ const sourcingRequestsFactHandler = require('../Analytical/sourcing/sourcingRequ
 const eventDimHandler = require('../Analytical/sourcing/eventDimHandler');
 const eventTypeDimHandler = require('../Analytical/sourcing/eventTypeDimHandler');
 
+const srProjectHandler = require('../Analytical/sourcing/srProjectHandler');
+const srProjectInfoHandler = require('../Analytical/sourcing/srProjectInfoHandler');
 const srProjectTaskFactHandler = require('../Analytical/sourcing/srProjectTaskFactHandler');
 const srProjectTaskApprovalFlowFactHandler = require('../Analytical/sourcing/srProjectTaskApprovalFlowFactHandler');
 const projectTaskFactHandler = require('../Analytical/sourcing/projectTaskFactHandler');
+const contractLineItemDocumentFactHandler = require('../Analytical/contracts/contractLineItemDocumentFactHandler');
+const generalContractWorkspaceFactHandler = require('../Analytical/contracts/generalContractWorkspaceFactHandler');
+const salesContractWorkspaceFactHandler = require('../Analytical/contracts/salesContractWorkspaceFactHandler');
+const collaborationRequestFactHandler = require('../Analytical/requisitions/collaborationRequestFactHandler');
 
 const receiptsFactHandler = require('../Analytical/receipt/receiptsFactHandler');
 const receiptsOSHandler = require('../Operational/receipts/receiptsOSHandler');
@@ -49,6 +55,7 @@ const supplierRegistrationProjectsFactHandler = require('../Analytical/suppliers
 const supplierRequestProjectsFactHandler = require('../Analytical/suppliers/supplierRequestProjectsFactHandler');
 const spmProjectsFactHandler = require('../Analytical/suppliers/spmProjectsFactHandler');
 const smProjectsFactHandler = require('../Analytical/suppliers/smProjectsFactHandler');
+const smProjectInfoHandler = require('../Analytical/suppliers/smProjectInfoHandler');
 const smProjectQuestionnaireResponsesFactHandler = require('../Analytical/suppliers/smProjectQuestionnaireResponsesFactHandler');
 const surveyResponseFactHandler = require('../Analytical/suppliers/surveyResponseFactHandler');
 const scorecardFactHandler = require('../Analytical/suppliers/scorecardFactHandler');
@@ -68,11 +75,13 @@ const savingsAllocationDetailsFactHandler = require('../Analytical/sourcing/savi
 const savingsFormFactHandler = require('../Analytical/sourcing/savingsFormFactHandler');
 
 const userDataDimHandler = require('../Analytical/general/userDataDimHandler');
+const userAbilityHandler = require('../Analytical/general/userAbilityHandler');
 const costCenterDimHandler = require('../Analytical/general/costCenterDimHandler');
 const companyCodeDimHandler = require('../Analytical/general/companyCodeDimHandler');
 
 const projectsFactHandler = require('../Analytical/sourcing/projectsFactHandler');
 const projectInfoFactHandler = require('../Analytical/sourcing/projectInfoFactHandler');
+const documentFactHandler = require('../Analytical/sourcing/documentFactHandler');
 const servicesProcurementWorkspacesFactHandler = require('../Analytical/procurement/servicesProcurementWorkspacesFactHandler');
 
 //Operational Data Handlers
@@ -152,6 +161,11 @@ async function ProcessData(viewTemplateName,Records,realm){
                 case "EXT_RequisitionLineItem":
                     affectedRows = await requisitionLineItemsFactHandler.insertData(Records, realm)
                     break;
+                
+                case "EXT_CollaborationRequest":
+                    affectedRows = await collaborationRequestFactHandler.insertData(Records, realm)
+                    break;
+
                 case "EXT_ContractLineItem":
                     affectedRows = await contractLineItemsFactHandler.insertData(Records, realm)
                     break;
@@ -206,6 +220,9 @@ async function ProcessData(viewTemplateName,Records,realm){
                 case "EXT_SMProjects":
                     affectedRows = await smProjectsFactHandler.insertData(Records, realm)
                     break;
+                case "EXT_SMProjectInfo":
+                    affectedRows = await smProjectInfoHandler.insertData(Records, realm)
+                    break;
                 case "EXT_Approval":
                     affectedRows = await approvalsFactHandler.insertData(Records, realm)
                     break;
@@ -233,6 +250,12 @@ async function ProcessData(viewTemplateName,Records,realm){
                 case "EXT_SRProjectTaskApprovalFlow":
                     affectedRows = await srProjectTaskApprovalFlowFactHandler.insertData(Records, realm)
                     break;
+                case "EXT_SRProject":
+                    affectedRows = await srProjectHandler.insertData(Records, realm)
+                    break;
+                case "EXT_SRProjectInfo":
+                    affectedRows = await srProjectInfoHandler.insertData(Records, realm)
+                    break;
                 case "EXT_ProjectTask":
                     affectedRows = await projectTaskFactHandler.insertData(Records, realm)
                     break;
@@ -241,6 +264,9 @@ async function ProcessData(viewTemplateName,Records,realm){
                     break;
                 case "EXT_ProjectInfo":
                     affectedRows = await projectInfoFactHandler.insertData(Records, realm)
+                    break;
+                case "EXT_Document":
+                    affectedRows = await documentFactHandler.insertData(Records, realm)
                     break;
                 case "EXT_ServicesProcurementWorkspaces":
                     affectedRows = await servicesProcurementWorkspacesFactHandler.insertData(Records, realm)
@@ -254,6 +280,19 @@ async function ProcessData(viewTemplateName,Records,realm){
                 case "EXT_ContractItem":
                     affectedRows = await contractItemFactHandler.insertData(Records, realm)
                     break;
+
+                case "EXT_ContractLineItemDocument":
+                    affectedRows = await contractLineItemDocumentFactHandler.insertData(Records, realm)
+                    break;
+
+                case "EXT_GeneralContractWorkspace":
+                    affectedRows = await generalContractWorkspaceFactHandler.insertData(Records, realm)
+                    break;
+
+                case "EXT_SalesContractWorkspace":
+                    affectedRows = await salesContractWorkspaceFactHandler.insertData(Records, realm)
+                    break;
+
                 case "EXT_SMSurveyTemplateQuestionDim":
                     affectedRows = await smSurveyTemplateQuestionDimHandler.insertData(Records, realm)
                     break;
@@ -292,6 +331,9 @@ async function ProcessData(viewTemplateName,Records,realm){
                         break;                
                 case "EXT_UserData":
                     affectedRows = await userDataDimHandler.insertData(Records, realm)
+                    break;
+                case "EXT_UserAbility":
+                    affectedRows = await userAbilityHandler.insertData(Records, realm)
                     break;
                 //Operational Reporting Procurement API
                 case "EXT_OP_Requisition":

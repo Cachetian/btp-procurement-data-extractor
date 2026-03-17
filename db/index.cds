@@ -13,6 +13,10 @@ using from './Analytical/contracts/ContractRequests';
 using from './Analytical/contracts/ContractsDim';
 using from './Analytical/contracts/ContractItems';
 
+using from './Analytical/contracts/ContractLineItemDocument';
+using from './Analytical/contracts/GeneralContractWorkspace';
+using from './Analytical/contracts/SalesContractWorkspace';
+
 using from './Operational/contracts/ContractWorkspaces';
 using from './Operational/contracts/Contracts';
 
@@ -29,6 +33,7 @@ using from './Analytical/general/Organization';
 using from './Analytical/general/CostCenter';
 using from './Analytical/general/CompanyCode';
 using from './Analytical/general/UserData';
+using from './Analytical/general/UserAbility';
 
 //invoices
 using from './Analytical/invoices/InvoiceLineItemsSA';
@@ -63,6 +68,7 @@ using from './Operational/receipts/Receipt';
 
 //requisitions
 using from './Analytical/requisitions/RequisitionLineItems';
+using from './Analytical/requisitions/CollaborationRequest';
 using from './Operational/requisitions/Requisitions';
 
 //sourcing
@@ -81,6 +87,9 @@ using from './Analytical/sourcing/Projects';
 using from './Analytical/sourcing/ProjectInfo';
 using from './Analytical/sourcing/Event';
 using from './Analytical/sourcing/EventType';
+using from './Analytical/sourcing/SRProject';
+using from './Analytical/sourcing/SRProjectInfo';
+using from './Analytical/sourcing/Document';
 
 using from './Operational/sourcing/RFXDocument';
 using from './Operational/sourcing/RFXItem';
@@ -110,6 +119,7 @@ using from './Analytical/suppliers/SurveyResponses';
 using from './Analytical/suppliers/Scorecards';
 using from './Analytical/suppliers/SMSurveyTemplateQuestion';
 using from './Analytical/suppliers/Survey';
+using from './Analytical/suppliers/SMProjectInfo';
 
 using from './SupplierManagement/SLPSuppliers';
 

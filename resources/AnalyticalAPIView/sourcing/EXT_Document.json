@@ -1,0 +1,32 @@
+{
+
+    "status": "published",
+    "documentType": "DocumentFact",
+    "selectAttributes": [
+        "InternalId",
+        "Status",
+        "Description",
+        "DocumentType",
+        "Title",
+        "ProjectInfo",
+        "TimeCreated",
+        "TimeUpdated",
+        "LoadCreateTime",
+        "LoadUpdateTime",
+        "CreateDate"
+    ],
+    "filterExpressions": [
+        {
+            "name": "updatedDateTo",
+            "field": "TimeUpdated",
+            "op": "<=",
+            "defaultValue": null
+        },
+        {
+            "name": "updatedDateFrom",
+            "field": "TimeUpdated",
+            "op": ">",
+            "defaultValue": null
+        }
+    ]
+}

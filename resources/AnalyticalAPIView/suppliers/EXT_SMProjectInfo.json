@@ -1,0 +1,34 @@
+{
+  "status": "published",
+  "documentType": "SMProjectInfoDim",
+  "selectAttributes": [
+    "ProjectId",
+    "TimeCreated",
+    "TimeUpdated",
+    "SourceSystem",
+    "LegalApprovalLevel",
+    "FinanceApprovalLevel",
+    "QualityApprovalLevel",
+    "SustainabilityApprovalLevel",
+    "PurchasingApprovalLevel",
+    "LOBApprovalLevel",
+    "RiskScore",
+    "CommodityLevelsMax",
+    "CommodityLevelsMin",
+    "IsLegacy"
+  ],
+  "filterExpressions": [
+    {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
+      "name": "updatedDateTo",
+      "field": "TimeUpdated",
+      "op": "<=",
+      "defaultValue": null
+    }
+  ]
+}

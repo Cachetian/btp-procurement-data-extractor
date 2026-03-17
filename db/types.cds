@@ -521,6 +521,17 @@ type projectInfo {
     SourceSystem            : String(100);
 }
 
+type srProjectInfo {
+    ProjectId               : String(50);
+    SourceSystem            : String(100);
+}
+
+type serviceCategoryDefinition {
+    CategoryDefinitionId               : String(25);
+    CategoryDefinition                 : String(255);
+    CategoryDriver                     : String(128);
+}
+
 type purchasingCompany: {
     CompanyId:          String(50);
     BusinessUnitId:     String(50);
@@ -1191,4 +1202,16 @@ type poAddress: {
 
 type buyerItemMaster: {
     BuyerPartNumber : String(255);
+}
+
+type srComment {
+    ProjectId                 : String(50);
+    SourceSystem              : String(100);
+    CommentId                 : String(50);
+    CommentText               : String(1000);
+    CommentAdded              : DateTime;
+    CommentAddedByUserId      : String(255);
+    CommentAddedByUserName    : String(255);
+    AclId                     : Integer;
+    
 }

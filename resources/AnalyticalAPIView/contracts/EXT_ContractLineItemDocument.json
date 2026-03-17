@@ -1,0 +1,38 @@
+{
+    "status": "published",
+    "documentType": "ContractLineItemDocumentFact",
+    "selectAttributes": [
+        "LoadCreateTime",
+        "LoadUpdateTime",
+        "DocumentId",
+        "Title",
+        "VersionNumber",
+        "AllowFormulas",
+        "AllowAdvancedPricingConditions",
+        "PricingConditionValidityPeriodType",
+        "ValidityPeriodDuration",
+        "AllowPeriodQuantityForEvent",
+        "AllowSupplierToViewPeriodQuantity",
+        "AllowSupplierScales",
+        "MaxVolumeThreshold",
+        "VolumeScaleEnabled",
+        "AclId",
+        "CreatedDate",
+        "Contract",
+        "SourceSystem"
+    ],
+    "filterExpressions": [
+        {
+            "name": "updatedDateTo",
+            "field": "TimeUpdated",
+            "op": "<=",
+            "defaultValue": null
+        },
+        {
+            "name": "updatedDateFrom",
+            "field": "TimeUpdated",
+            "op": ">",
+            "defaultValue": null
+        }
+    ]
+}

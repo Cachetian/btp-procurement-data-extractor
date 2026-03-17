@@ -1,0 +1,33 @@
+{
+  "status": "published",
+  "documentType": "SRProjectInfoDim",
+  "selectAttributes": [
+    "ProjectId",
+    "SourceSystem",
+    "EngagementRequestStatus",
+    "IssuePrimarySourceId",
+    "IssueSecondarySourceId",
+    "LiveERVersion",
+    "InChangeRequest",
+    "IsRiskLiable",
+    "ResidualRisk",
+    "InherentRiskRating",
+    "SourceProject",
+    "SourceProjectId",
+    "AclId"
+  ],
+  "filterExpressions": [
+    {
+      "name": "updatedDateFrom",
+      "field": "TimeUpdated",
+      "op": ">=",
+      "defaultValue": null
+    },
+    {
+      "name": "updatedDateTo",
+      "field": "TimeUpdated",
+      "op": "<=",
+      "defaultValue": null
+    }
+  ]
+}
